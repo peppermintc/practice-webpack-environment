@@ -17,7 +17,7 @@ module.exports = {
   }
 };
 ```
-- `__dirname`은 현재 실행되고있는 모듈 폴더 경로를 string 값으로 가지고 있는 변수입니다. Node.js의 CommonJS 모듈 시스템에서 지원하는 변수입니다.
+- `__dirname`은 현재 실행되고있는 모듈 폴더 경로를 string 값으로 가지고 있는 변수입니다.
 
   https://nodejs.org/dist/latest-v18.x/docs/api/modules.html#__dirname
 
@@ -25,6 +25,6 @@ module.exports = {
 
   https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathresolvepaths
   
-- `mode`에는 `development`, `production`, `none`이 있습니다. 이에 따라 빌드시 최적화 방식이 다릅니다. 모드에 따라 다른 환경설정을 줄 수 있습니다.
+- `mode`에는 `development`, `production`, `none`이 있습니다. 모드에 따라 빌드시 최적화 방식이 다르고 환경설정을 다르게 적용할 수 있습니다.
 
   https://webpack.js.org/configuration/mode
