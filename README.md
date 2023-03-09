@@ -2,8 +2,9 @@
 
 1. [웹팩 설정 파일](#웹팩-설정-파일)
 2. [Entry](#Entry)
+3. [Output](#Output)
 
----
+
 
 ## 웹팩 설정 파일
 
@@ -37,9 +38,17 @@ module.exports = {
 
   https://github.com/webpack/webpack-cli/tree/master/packages/webpack-cli
 
----
+
 
 ## Entry
 
 Entry는 Webpack 번들링을 할 때 진입점이 되는 자바스크립트 파일입니다. Entry point는 하나가 될 수도 있고 멀티페이지인 경우 여러개가 될 수도 있습니다. 단 HTML 하나당 하나의 엔트리를 사용해야한다는 규칙이 있습니다.
+
+
+
+## Output
+
+Output은 번들링 결과물을 의미하고 파일명과 저장되는 경로를 설정 파일에서 설정 할 수 있습니다.
+
+
 
