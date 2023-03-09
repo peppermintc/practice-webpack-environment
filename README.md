@@ -51,3 +51,10 @@ CSS 이외에도 TS, Babel, Sass 등의 로더들이 있는데 파일 확장자�
 로더는 체이닝시켜 순차적으로 적용되게 할 수 있고 use에 배열로 로더를 명시하면 마지막 순서 로더부터 스택에서 팝되는 순서대로 적용됩니다.
 
 https://webpack.js.org/concepts/loaders/#loader-features
+
+## Plugin
+
+웹팩 동작에 추가적인 기능을 제공합니다. loader가 번들링 과정에서 처리를 도와주었다면 plugin은 번들링 결과물을 처리하고 변경시킵니다. 다음과 같은 플러그인들을 예시로 들 수 있습니다.
+
+- HtmlWebpackPlugin : 빌드 결과물을 script 태그 로드하도록 자동으로 html 파일을 만들고 script 태그를 추가해줍니다.
+- ProgressPlugin : 빌드 진행 상황을 터미널에 출력해줍니다.
