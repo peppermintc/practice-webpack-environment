@@ -3,6 +3,8 @@
 1. [웹팩 설정 파일](#웹팩-설정-파일)
 2. [Entry](#Entry)
 3. [Output](#Output)
+4. [Loader](#Loader)
+5. [Plugin](#Plugin)
 
 ## 웹팩 설정 파일
 
