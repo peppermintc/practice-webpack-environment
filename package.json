@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/peppermintc/tryout-webpack/issues"
   },
-  "homepage": "https://github.com/peppermintc/tryout-webpack#readme"
+  "homepage": "https://github.com/peppermintc/tryout-webpack#readme",
+  "devDependencies": {
+    "webpack": "^5.76.0",
+    "webpack-cli": "^5.0.1"
+  }
 }
