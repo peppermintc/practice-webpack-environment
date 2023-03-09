@@ -1,0 +1,19 @@
+{
+  "name": "tryout-webpack",
+  "version": "1.0.0",
+  "description": "1. [웹팩 설정 파일](#웹팩-설정-파일)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peppermintc/tryout-webpack.git"
+  },
+  "author": "peppermintc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peppermintc/tryout-webpack/issues"
+  },
+  "homepage": "https://github.com/peppermintc/tryout-webpack#readme"
+}
