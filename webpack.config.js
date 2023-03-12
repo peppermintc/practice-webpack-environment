@@ -2,6 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const DEV_SERVER_PORT = 3000;
+
 module.exports = {
   mode: "none",
 
@@ -40,7 +42,7 @@ module.exports = {
 
   devServer: {
     host: "localhost",
-    port: 3000,
+    port: DEV_SERVER_PORT,
     open: true,
   },
 
