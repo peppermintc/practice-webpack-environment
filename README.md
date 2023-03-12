@@ -10,15 +10,14 @@
 
 ### Webpack 환경 연습
 
-1. [Webpack + React 환경 구축]()
-2. [Babel & polyfill 추가]()
-3. [Typescript 사용 설정]()
-4. [CSS, Styled Components 설정]()
-5. [eslint & prettier 설정]()
-6. [컴포넌트 구현 + Storybook 추가]()
-7. [Deploy + CI/CD]()
-8. [dev, prod env 환경 분리]()
-9. [Module Federation 환경 구축]()
+1. [Webpack + React 환경 구축](#Webpack-+-React-환경-구축)
+2. [Typescript 사용 설정]()
+3. [CSS, Styled Components 설정]()
+4. [eslint & prettier 설정]()s
+5. [Storybook 추가]()
+6. [Deploy + CI/CD]()
+7. [dev, prod env 환경 분리]()
+8. [Module Federation 환경 구축]()
 
 ---
 
@@ -79,8 +78,38 @@ https://webpack.js.org/concepts/loaders/#loader-features
 
 ---
 
-## html-webpack-plugin 추가
+## Webpack + React 환경 구축
+
+### html-webpack-plugin 추가
 
 웹팩 번들링 후 index.html 파일을 자동으로 만들어 줍니다. 번들 파일을 불러오는 script 태그도 추가해줍니다.
 
 https://webpack.js.org/plugins/html-webpack-plugin/
+
+### babel-loader
+
+React의 JSX 문법을 사용하기 위해서는 이를 ES 자바스크립트 문법으로 트랜스파일링해주는 babel 로더를 사용해야 합니다.
+
+### Webpack dev server
+
+개발 환경을 띄우기 위해 webpack-dev-server를 사용할 수 있습니다.
+
+### .jsx 확장자 호환
+
+```javascript
+resolve: {
+    // 다음 확장자 파일들을 모듈로 인식하도록 설정
+    extensions: [".js", ".jsx"],
+  },
+```
+
+### 브라우저 환경에서 process 객체 참조 오류 해결
+
+Webpack 5 사용시 다음 플러그인으로 바인딩이 필요합니다.
+
+```javascript
+// 브라우저 환경에서 process 객체를 사용, 없으면 오류
+new webpack.ProvidePlugin({
+  process: "process/browser",
+}),
+```
