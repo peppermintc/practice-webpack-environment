@@ -1,17 +1,32 @@
-## Webpack 환경 연습
+<div align="center">
+  <a href="https://github.com/peppermintc/webpack-environment">
+    <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
+  </a>
+  <br>
+  <br>
+  <br>
+  
+  <h1>My Webpack Environment Template</h1>
+  
+  <p>
+    Webpack 5 + React + TypeScript + CSS 등으로 이루어진 템플릿 만들어보기
+  </p>
+</div>
 
-1. [Webpack + React 환경 구축](#1-webpack--react-환경-구축)
-2. [Typescript 사용 설정]()
-3. [CSS, Styled Components 설정]()
-4. [eslint & prettier 설정]()s
-5. [Storybook 추가]()
-6. [Deploy + CI/CD]()
-7. [dev, prod env 환경 분리]()
-8. [Module Federation 환경 구축]()
+## Table of Contents
+
+1. [Webpack 5 + React 18](#1-webpack-5--react-18)
+2. Typescript 사용 설정
+3. CSS, Styled Components 설정
+4. eslint & prettier 설정
+5. Storybook 추가
+6. Deploy + CI/CD
+7. dev, prod env 환경 분리
+8. Module Federation 환경 구축
 
 ---
 
-## 1. Webpack + React 환경 구축
+## 1. Webpack 5 + React 18
 
 ### html-webpack-plugin
 
