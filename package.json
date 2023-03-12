@@ -19,6 +19,7 @@
   "homepage": "https://github.com/peppermintc/tryout-webpack#readme",
   "devDependencies": {
     "webpack": "^5.76.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "html-webpack-plugin": "^5.5.0"
   }
 }

@@ -78,3 +78,9 @@ https://webpack.js.org/concepts/loaders/#loader-features
 - ProgressPlugin : 빌드 진행 상황을 터미널에 출력해줍니다.
 
 ---
+
+## html-webpack-plugin 추가
+
+웹팩 번들링 후 index.html 파일을 자동으로 만들어 줍니다. 번들 파일을 불러오는 script 태그도 추가해줍니다.
+
+https://webpack.js.org/plugins/html-webpack-plugin/
