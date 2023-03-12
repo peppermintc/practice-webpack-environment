@@ -16,7 +16,6 @@ module.exports = {
 
   module: {
     rules: [
-      // JSX 문법 호환
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -31,13 +30,10 @@ module.exports = {
   },
 
   plugins: [
-    // 브라우저 환경에서 process 객체를 사용, 없으면 오류
+    new HtmlWebpackPlugin({ template: "./src/index.html" }),
     new webpack.ProvidePlugin({
       process: "process/browser",
     }),
-
-    // HTML 파일 처리
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
   ],
 
   devServer: {
@@ -47,7 +43,6 @@ module.exports = {
   },
 
   resolve: {
-    // 다음 확장자 파일들을 모듈로 인식하도록 설정
     extensions: [".js", ".jsx"],
   },
 };

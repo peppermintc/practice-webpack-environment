@@ -1,16 +1,6 @@
-## 목차
+## Webpack 환경 연습
 
-### Webpack 기본 개념
-
-1. [웹팩 설정 파일](#웹팩-설정-파일)
-2. [Entry](#Entry)
-3. [Output](#Output)
-4. [Loader](#Loader)
-5. [Plugin](#Plugin)
-
-### Webpack 환경 연습
-
-1. [Webpack + React 환경 구축](#Webpack-+-React-환경-구축)
+1. [Webpack + React 환경 구축](#1-webpack--react-환경-구축)
 2. [Typescript 사용 설정]()
 3. [CSS, Styled Components 설정]()
 4. [eslint & prettier 설정]()s
@@ -21,95 +11,119 @@
 
 ---
 
-## 웹팩 설정 파일
+## 1. Webpack + React 환경 구축
+
+### html-webpack-plugin
+
+웹팩 번들링 후 HTML 파일을 자동으로 만들어주고 번들링 결과 파일을 로드하는 script 태그를 자동적으로 추가해줍니다.
 
 ```javascript
-// webpack.config.js (웹팩 docs의 코드 예시가 CommonJS로 되어있다.)
-const path = require("path");
+// webpack.config.js
+const webpack = require("webpack");
 
 module.exports = {
-  mode: "none",
-  entry: "./src/index.js",
-  output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
-  },
+  // ...
+  plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
+  // ...
 };
 ```
 
-- `__dirname`은 현재 실행되고있는 모듈 폴더 경로를 string 값으로 가지고 있는 변수입니다.
-
-  https://nodejs.org/dist/latest-v18.x/docs/api/modules.html#__dirname
-
-- `path.resolve()`는 인자로 전달받은 경로들을 합쳐 하나의 절대경로로 리턴하는 함수입니다.
-
-  https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathresolvepaths
-
-- `mode`에는 `development`, `production`, `none`이 있습니다. 모드에 따라 빌드시 최적화 방식이 다르고 환경설정을 다르게 적용할 수 있습니다.
-
-  https://webpack.js.org/configuration/mode
-
-- webpack-cli를 이용하면 웹팩 설정을 쉽게할 수 있습니다.
-
-  https://github.com/webpack/webpack-cli/tree/master/packages/webpack-cli
-
-## Entry
-
-Entry는 Webpack 번들링을 할 때 진입점이 되는 자바스크립트 파일입니다. Entry point는 하나가 될 수도 있고 멀티페이지인 경우 여러개가 될 수도 있습니다. 단 HTML 하나당 하나의 엔트리를 사용해야한다는 규칙이 있습니다.
-
-## Output
-
-Output은 번들링 결과물을 의미하고 파일명과 저장되는 경로를 설정 파일에서 설정 할 수 있습니다.
-
-## Loader
-
-Loader는 번들링 과정에서 자바스크립 이외의 파일들(html, css, 이미지 폰트 등)을 해석하고 처리 할 수 있게 도와주는 속성입니다.
-CSS 이외에도 TS, Babel, Sass 등의 로더들이 있는데 파일 확장자에 따라 로더를 적용 할 수 있고 자주 사용되는 로더들을 알아두면 도움이 될 것 같습니다.
-로더는 체이닝시켜 순차적으로 적용되게 할 수 있고 use에 배열로 로더를 명시하면 마지막 순서 로더부터 스택에서 팝되는 순서대로 적용됩니다.
-
-https://webpack.js.org/concepts/loaders/#loader-features
-
-## Plugin
-
-웹팩 동작에 추가적인 기능을 제공합니다. loader가 번들링 과정에서 처리를 도와주었다면 plugin은 번들링 결과물을 처리하고 변경시킵니다. 다음과 같은 플러그인들을 예시로 들 수 있습니다.
-
-- HtmlWebpackPlugin : 빌드 결과물을 script 태그 로드하도록 자동으로 html 파일을 만들고 script 태그를 추가해줍니다.
-- ProgressPlugin : 빌드 진행 상황을 터미널에 출력해줍니다.
-
----
-
-## Webpack + React 환경 구축
-
-### html-webpack-plugin 추가
-
-웹팩 번들링 후 index.html 파일을 자동으로 만들어 줍니다. 번들 파일을 불러오는 script 태그도 추가해줍니다.
-
-https://webpack.js.org/plugins/html-webpack-plugin/
+- 종류: Plugin
+- devDependencies: html-webpack-plugin
+- https://webpack.js.org/plugins/html-webpack-plugin/
+- https://github.com/jantimon/html-webpack-plugin
 
 ### babel-loader
 
-React의 JSX 문법을 사용하기 위해서는 이를 ES 자바스크립트 문법으로 트랜스파일링해주는 babel 로더를 사용해야 합니다.
-
-### Webpack dev server
-
-개발 환경을 띄우기 위해 webpack-dev-server를 사용할 수 있습니다.
-
-### .jsx 확장자 호환
+babel-loader는 React JSX 문법 사용시 이를 컴파일러가 해석할 수 있는 ES 자바스크립트로 트랜스파일링해주는 역할을 합니다.
 
 ```javascript
-resolve: {
-    // 다음 확장자 파일들을 모듈로 인식하도록 설정
+// webpack.config.js
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-react", "@babel/preset-env"],
+          },
+        },
+      },
+    ],
+  },
+  // ...
+};
+```
+
+- 종류: Loader
+- devDependencies: babel-loader, @babel/core, @babel/preset-env, @babel/preset-react
+- https://webpack.js.org/loaders/babel-loader/
+
+### .jsx 파일 확장자 지원
+
+검색하여 로드할 파일 확장자 .jsx를 추가
+
+```javascript
+// webpack.config.js
+module.exports = {
+  // ...
+  resolve: {
     extensions: [".js", ".jsx"],
   },
+  // ...
+};
 ```
 
-### 브라우저 환경에서 process 객체 참조 오류 해결
+- 종류: Configuration
+- https://webpack.js.org/configuration/resolve/#resolveextensions
 
-Webpack 5 사용시 다음 플러그인으로 바인딩이 필요합니다.
+### webpack.ProvidePlugin > process/browser 모듈 추가
+
+Webpack 5에서는 polyfill이 지원되지 않기 때문에 webpack.ProvidePlugin 플러그인으로 process/browser 모듈을 직접 추가해주어야 합니다.
 
 ```javascript
-// 브라우저 환경에서 process 객체를 사용, 없으면 오류
-new webpack.ProvidePlugin({
-  process: "process/browser",
-}),
+// webpack.config.js
+const webpack = require("webpack");
+
+module.exports = {
+  // ...
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
+  ],
+  // ...
+};
 ```
+
+- 종류: Plugin
+- devDependencies: process
+- https://webpack.js.org/migrate/5/#run-a-single-build-and-follow-advice
+
+### webpack-dev-server
+
+로컬 포트에 개발 웹 서버를 구동시켜줍니다.
+
+```javascript
+// webpack.config.js
+module.exports = {
+  // ...
+  devServer: {
+    host: "localhost",
+    port: 3000,
+    open: true,
+  },
+  // ...
+};
+```
+
+- 종류: Plugin
+- devDependencies: webpack-dev-server
+- https://webpack.js.org/configuration/dev-server/
+- https://github.com/webpack/webpack-dev-server
+
+---
