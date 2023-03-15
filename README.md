@@ -16,7 +16,7 @@
 ## Table of Contents
 
 1. [Webpack 5 + React 18](#1-webpack-5--react-18)
-2. Typescript 사용 설정
+2. [Typescript 사용 설정](#2-Typescript-사용-설정)
 3. CSS, Styled Components 설정
 4. eslint & prettier 설정
 5. Storybook 추가
@@ -140,5 +140,39 @@ module.exports = {
 - devDependencies: webpack-dev-server
 - https://webpack.js.org/configuration/dev-server/
 - https://github.com/webpack/webpack-dev-server
+
+---
+
+## 2. Typescript 사용 설정
+
+### Typescript 의존성 추가 & 로더 추가
+
+Typescript 의존성과 함께 ts-loader를 추가해줍니다.
+
+```javascript
+// webpack.config.js
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "ts-loader",
+          options: {
+            transpileOnly: true,
+          },
+        },
+      },
+    ],
+  },
+  // ...
+};
+```
+
+- 종류: Loader
+- devDependencies: ts-loader
+- https://webpack.kr/guides/typescript/
 
 ---
