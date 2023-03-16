@@ -5,10 +5,10 @@
   <br>
   <br>
   <br>
-  
-  <h1>My Webpack Environment Template</h1>
-  
-  <p>
+
+<h1>My Webpack Environment Template</h1>
+
+<p>
     Webpack 5 + React + TypeScript + CSS 등으로 이루어진 템플릿 만들어보기
   </p>
 </div>
@@ -17,7 +17,7 @@
 
 1. [Webpack 5 + React 18](#1-webpack-5--react-18)
 2. [Typescript 사용 설정](#2-Typescript-사용-설정)
-3. CSS, Styled Components 설정
+3. [CSS & Styled Components 설정](#3-css--styled-components-설정)
 4. eslint & prettier 설정
 5. Storybook 추가
 6. Deploy + CI/CD
@@ -176,3 +176,31 @@ module.exports = {
 - https://webpack.kr/guides/typescript/
 
 ---
+
+## 3. CSS & Styled Components 설정
+
+CSS 파일을 불러와 스타일을 적용시키려면 두가지 의존성을 추가해야합니다.
+
+- `css-loader`는 .css 파일을 로드하여 자바스크립트 모듈로 변환시킵니다.
+- `style-loader`는 자바스크립트 모듈로 변환된 CSS를 style 태그로 HTML 페이지에 동적으로 추가해줍니다.
+
+```javascript
+// webpack.config.js
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        // loader는 배열 뒤에서 부터 적용됩니다 (css-loader > style-loader 순서를 지켜야합니다)
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+      },
+    ],
+  },
+  // ...
+};
+```
+
+- 종류: Loader
+- devDependencies: css-loader, style-loader
+- https://webpack.kr/concepts/loaders/#configuration
