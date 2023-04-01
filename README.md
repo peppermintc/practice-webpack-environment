@@ -18,10 +18,11 @@
 1. [Webpack 5 + React 18](#1-webpack-5--react-18)
 2. [Typescript 사용 설정](#2-Typescript-사용-설정)
 3. [CSS & Styled Components 설정](#3-css--styled-components-설정)
-4. Storybook 추가
-5. Deploy + CI/CD
-6. dev, prod env 환경 분리
-7. Module Federation 환경 구축
+4. 코드 난독화 플러그인 terser 추가
+5. Storybook 추가
+6. Deploy + CI/CD
+7. dev, prod env 환경 분리
+8. Module Federation 환경 구축
 
 ---
 
